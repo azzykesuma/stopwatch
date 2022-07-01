@@ -5,16 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>simple stop watch</title>
+    <link rel="stylesheet" href="./index.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="time">
-        <span id="time">00:00:00</span>
+        <span id="time" class="time__display">0 : 0 : 0</span>
     </div>
 
     <div class="wrapper">
         <button class="wrapper__start" id="start">start</button>
         <button class="wrapper__stop" id="stop">stop</button>
-        <button class="wrapper__reset">reset</button>
+        <button class="wrapper__reset" id="reset">reset</button>
     </div>
 
     <script src="./dist/main.js"></script>

@@ -8,10 +8,17 @@ let stopTime = true;
 // grabbing buttons and applying functions
 const start = document.getElementById('start');
 const stopTimer = document.getElementById('stop');
+const reset = document.getElementById('reset');
 if (start) {
     start.addEventListener('click', () => {
         stopTime = false;
         timerOn();
+        if (start != null) {
+            start.disabled = true;
+        }
+        if (stopTimer != null) {
+            stopTimer.disabled = false;
+        }
     });
 }
 if (stopTimer) {
@@ -19,11 +26,36 @@ if (stopTimer) {
         if (stopTime == false) {
             stopTime = true;
         }
+        if (stopTime == true) {
+            if (start != null) {
+                start.disabled = false;
+            }
+        }
+    });
+}
+if (reset) {
+    reset.addEventListener('click', () => {
+        stopTime = true;
+        hour = 0;
+        minutes = 0;
+        seconds = 0;
+        if (start != null) {
+            if (stopTime == true) {
+                start.disabled = false;
+            }
+        }
+        if (stopTimer != null) {
+            stopTimer.disabled = true;
+        }
+        if (time) {
+            time.innerHTML = '0 : 0 : 0';
+        }
+        timerOn();
     });
 }
 function timerOn() {
     if (stopTime == false) {
-        seconds = seconds + 1;
+        seconds += 1;
         if (seconds == 60) {
             minutes += 1;
             seconds = 0;
@@ -34,7 +66,7 @@ function timerOn() {
             seconds = 0;
         }
         if (time) {
-            time.innerHTML = `${hour} : ${minutes} ${seconds}`;
+            time.innerHTML = `${hour} : ${minutes} : ${seconds}`;
         }
         setTimeout("timerOn()", 1000);
     }
